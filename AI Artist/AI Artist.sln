@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI Artist", "AI Artist\AI Artist.csproj", "{40857D49-EB9A-47E9-ADAA-8E133F2230FA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8F1B2E87-2EB6-4D0F-9894-D82BB07832EE} = {8F1B2E87-2EB6-4D0F-9894-D82BB07832EE}
+		{8F200D7A-4D38-48AD-9F88-1F4D2F4F1539} = {8F200D7A-4D38-48AD-9F88-1F4D2F4F1539}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI Artist Install Tool", "..\AI Artist Install Tool\AI Artist Install Tool\AI Artist Install Tool.csproj", "{8F200D7A-4D38-48AD-9F88-1F4D2F4F1539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Install_Model", "..\Install_Model\Install_Model\Install_Model.csproj", "{8F1B2E87-2EB6-4D0F-9894-D82BB07832EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40857D49-EB9A-47E9-ADAA-8E133F2230FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40857D49-EB9A-47E9-ADAA-8E133F2230FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40857D49-EB9A-47E9-ADAA-8E133F2230FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40857D49-EB9A-47E9-ADAA-8E133F2230FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F200D7A-4D38-48AD-9F88-1F4D2F4F1539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F200D7A-4D38-48AD-9F88-1F4D2F4F1539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F200D7A-4D38-48AD-9F88-1F4D2F4F1539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F200D7A-4D38-48AD-9F88-1F4D2F4F1539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F1B2E87-2EB6-4D0F-9894-D82BB07832EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F1B2E87-2EB6-4D0F-9894-D82BB07832EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F1B2E87-2EB6-4D0F-9894-D82BB07832EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F1B2E87-2EB6-4D0F-9894-D82BB07832EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F8090FF-104D-43DF-B0E6-1D8FA8DF0C34}
+	EndGlobalSection
+EndGlobal

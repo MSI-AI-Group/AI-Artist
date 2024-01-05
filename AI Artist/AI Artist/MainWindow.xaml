@@ -1,0 +1,261 @@
+﻿<Window x:Class="AI_Artist_V2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AI_Artist_V2"
+        mc:Ignorable="d"
+        Height="888" Width="1283"
+        WindowStyle="None" MouseLeftButtonDown="Grid_MouseLeftButtonDown" 
+        MouseMove="Grid_MouseMove" MouseLeftButtonUp="Grid_MouseLeftButtonUp"
+        ResizeMode="NoResize" x:Name="Main_UI"
+        Unloaded="Windows_Unload" Visibility="Visible">
+
+    <Window.Background>
+        <ImageBrush ImageSource="/Image/bg1.png"/>
+    </Window.Background>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Resources/Resource_Window_Main.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome            
+        CaptionHeight="0"
+        CornerRadius="16"
+        GlassFrameThickness="0"
+        UseAeroCaptionButtons="False"
+        ResizeBorderThickness="0,0,4,15"
+        NonClientFrameEdges="None"/>
+    </WindowChrome.WindowChrome>
+
+    <Viewbox>
+        <!--<Canvas Height="908" Width="1383">-->
+        <Canvas Height="988" Width="1433">
+
+            <!--Region Title-->
+            <TextBlock Text="AI Artist" Margin="40,0,0,0" Foreground="White" FontSize="80" FontWeight="Bold" Width="Auto" Height="Auto"/>
+            <!--#endregion-->
+
+            <!-- Region Setting-->
+            <StackPanel Orientation="Vertical" Margin="50,120,0,0">
+                <StackPanel Orientation="Horizontal" Height="40" >
+                    <Label Content="Optimizer:" Foreground="White" FontSize="18" Width="100"/>
+                    <RadioButton Name="Opt_Pytorch" Content="Pytorch" Visibility="Collapsed" Style="{DynamicResource Style_RadioButton_Text_Style}" Checked="SwitchOpt_Checked"/>
+                    <RadioButton Margin="10,0,0,0" Name="Opt_xformers" Content="xformers" Visibility="Collapsed" Style="{DynamicResource Style_RadioButton_Text_Style}" Checked="SwitchOpt_Checked"/>
+                    <RadioButton Margin="10,0,0,0" Name="Opt_TensorRT" Content="TensorRT" Visibility="Collapsed" Style="{DynamicResource Style_RadioButton_Text_Style}" Checked="SwitchOpt_Checked"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Height="40" Margin="0,25,0,0">
+                    <Label Content="Style:" Foreground="White" FontSize="18" Width="70"/>
+                    <ComboBox x:Name="CB_Style" SelectedIndex="0" Width="350" FontSize="18"
+                              HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="CB_Style_SelectionChanged">
+                    </ComboBox>
+                    <Button x:Name="Btn_Style_Add" IsEnabled="False" Margin="20,-10,0,0" Style="{DynamicResource Style_Button_Add}" Click="Btn_Style_Add_Click"/>
+                    <Button x:Name="Btn_Style_Delete" IsEnabled="False" Margin="10,-10,0,0" Style="{DynamicResource Style_Button_Delete}" Click="Btn_Style_Delete_Click"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Height="40" Margin="0,25,0,0">
+                    <Label Content="Plugin:" Foreground="White" FontSize="18" Width="70"/>
+                    <ComboBox x:Name="CB_LoRA" SelectedIndex="0" Width="350" FontSize="18"
+                              HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="LoRA_comboBox_SelectionChanged">
+                    </ComboBox>
+                    <Button x:Name="Btn_LoRA_Add" IsEnabled="False" Margin="20,-10,0,0" Style="{DynamicResource Style_Button_Add}" Click="Btn_LoRA_Add_Click"/>
+                    <Button x:Name="Btn_LoRA_Delete" IsEnabled="False" Margin="10,-10,0,0" Style="{DynamicResource Style_Button_Delete}" Click="Btn_LoRA_Delete_Click"/>
+                    <Label Margin="10,0,0,0" Name="Label_LoRA_Weight" Visibility="Visible" Content="Weight:" Foreground="gray" FontSize="18" Width="70"/>
+                    <TextBox Margin="20,0,0,0" HorizontalAlignment="Left" Visibility="Visible" IsEnabled="False" Name="TextBox_LoRA_Weight" Text="" 
+                         Width="50" Height="30" FontSize="18" PreviewTextInput="TextBox_PreviewTextInput_Weight"
+                             TextChanged="TextBox_TextChanged"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
+                    <Label Content="Quantity:" Foreground="White" FontSize="18" Width="90"/>
+                    <RadioButton Name="RB_Count_1" IsChecked="True" Content="1" Style="{DynamicResource Style_RadioButton_small_Text_Style}"/>
+                    <RadioButton Margin="10,0,0,0" Name="RB_Count_4" Content="4" Style="{DynamicResource Style_RadioButton_small_Text_Style}"/>
+                    <RadioButton Margin="10,0,0,0" Name="RB_Count_9" Content="9" Style="{DynamicResource Style_RadioButton_small_Text_Style}"/>
+                    <RadioButton Margin="10,0,0,0" Name="RB_Count_16" Content="16" Style="{DynamicResource Style_RadioButton_small_Text_Style}"/>
+
+                    <Label Margin="145,0,0,0" Content="Step:" Foreground="White" FontSize="18" Width="65"/>
+                    <TextBox  HorizontalAlignment="Left"  Name="Steps_text" TextWrapping="Wrap" Text="20" 
+                         Width="120" Height="30" FontSize="18" PreviewTextInput="TextBox_PreviewTextInput"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
+                    <Label Content="Ratio:" Foreground="White" FontSize="18" Width="70"/>
+                    <RadioButton IsChecked="True" Name="Size_1" Content="1 : 1" Style="{DynamicResource Style_RadioButton_small_Text_Style}"/>
+                    <RadioButton Margin="10,0,0,0" Name="Size_2" Content="2 : 3" Style="{DynamicResource Style_RadioButton_small_Text_Style}"/>
+                    <RadioButton Margin="10,0,0,0" Name="Size_3" Content="3 : 2" Style="{DynamicResource Style_RadioButton_small_Text_Style}"/>
+
+                    <Label Margin="255,0,0,0" Content="Seed:" Foreground="White" FontSize="18" Width="65"/>
+                    <TextBox HorizontalAlignment="Left"  Name="Seed_text" TextWrapping="Wrap" Text="-1" 
+                         Width="120" Height="30" FontSize="18" PreviewTextInput="TextBox_PreviewTextInput_Seed"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
+                    <Label Content="Variation:" Foreground="White" FontSize="18" Width="90"/>
+                    <Slider x:Name="Slider_Denosing" Minimum="0" Maximum="100" Value="50" Width="410" Ticks="0,5,10,15,20,25,30,35,40,45,50,
+                            55,60,65,70,75,80,85,90,95,100" IsSnapToTickEnabled="True"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" ValueChanged="Slider_Denosing_ValueChanged"/>
+                    <Label x:Name="Label_Denosing" Margin="10,-4,0,0" HorizontalAlignment="Left" Content="50%" Foreground="White"
+                         Width="100" Height="30" FontSize="18"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,25,0,0">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Prompt:" Foreground="White" FontSize="18" Width="auto"/>
+                        <TextBox x:Name="TextBox_Prompt" TextWrapping="Wrap" 
+                                 Text="with a Raider GE68 HX laptop and a neon light in the foreground, a futuristic night with neon lights and skyscrapers in the background,  Beeple, cyberpunk city, cyberpunk art, retrofuturism,crisp,pixel-perfect,insane details,masterpiece, realistic 3D" 
+                         Width="300" Height="350" FontSize="18"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                        <Label Content="Image:" Foreground="White" FontSize="18" />
+                        <Button x:Name="Btn_ImportImg"
+                                Style="{DynamicResource Style_Button_Select_Image}"
+                                Content="{x:Null}" Height="350" Width="450" Click="Btn_ImportImg_Click"/>
+
+                    </StackPanel>
+                </StackPanel>
+                <Button Name="Btn_Generate" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                        Margin="0,35,0,0" Content="Generate" Style="{DynamicResource Style_Button_Generate}" Click="Button_Generate_Click"/>
+            </StackPanel>
+            <!--#endregion-->
+
+            <!--#region Selet Image Text-->
+            <Button x:Name="Btn_ImportImg_Text" Margin="370,530,0,0"
+                    Height="350" Width="450" Click="Btn_ImportImg_Click" FontSize="24">
+                <StackPanel>
+                    <Image Source="/Image/pic_b.png" Height="90" Width="90" />
+                    <TextBlock TextAlignment="Center" Margin="0,20" Foreground="gray">
+                        Click to import the reference Image
+                    </TextBlock>
+                </StackPanel>
+            </Button>
+            <!--#endregion-->
+
+            <!--#region Delete input image-->
+            <Button x:Name="Btn_RemoveImportImg" Visibility="Collapsed" Margin="770,530,0,0" Style="{StaticResource Style_Button_Delete_Image}" 
+                    Width="50" Height="50" Click="Btn_Remove_Image_Click"/>
+            <!--#endregion-->
+
+            <Border Margin="850,120,0,0" Width="4" Height="840" Background="#1A1C53" CornerRadius="3"/>
+
+            <!--#region Generator-->
+            <StackPanel Margin="880,160,0,0" Orientation="Vertical" 
+                        Width="500">
+                <StackPanel Orientation="Horizontal">
+                    <Border Width="250" >
+                        <Label x:Name="Seconds_result" Content="Second: 0s" Foreground="White" FontSize="18"/>
+                    </Border>
+                    <Border Width="250" >
+                        <Label Name="Seeds_result" Content="Seed: -1" Foreground="White" FontSize="18" HorizontalAlignment="Right"/>
+                    </Border>
+                </StackPanel>
+
+                <Button x:Name="Btn_OutputImg" IsEnabled="False" Margin="10,20,10,10"
+                                Style="{DynamicResource Style_Button_Output_Image}" Height="480" Width="480" Click="Btn_OutputImg_Click"/>
+
+                <ScrollViewer Margin="0,40,0,0" HorizontalScrollBarVisibility="Auto" 
+                              VerticalScrollBarVisibility="Disabled">
+                    <StackPanel x:Name="StackPanel_OutputImg_Preview" Orientation="Horizontal" Height="70">
+                        <!--<RadioButton Height="60" Width="60"
+                                Style="{DynamicResource Style_Button_Output_Little_Image}"/>-->
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+            <!--#endregion-->
+
+            <!-- region Grid Image-->
+            <WrapPanel x:Name="OutputImage_Grid" Visibility="Collapsed" Margin="890,214,0,0" Height="480" Width="480"/>
+            <!--endregion-->
+            
+            <!--#region extra btn-->
+            <StackPanel Margin="880,895,0,0" Orientation="Horizontal">
+                <Button x:Name="Btn_Dir" Style="{DynamicResource Style_Button_Img}" Click="Btn_OpenOutputDir_Click" Tag="Dir" Content="/Image/icon_save.png"
+                        MouseEnter="Open_Tootip" MouseLeave="Close_Tootip"/>
+                <Button x:Name="Btn_Replace" IsEnabled="False" Margin="25,0,0,0" Style="{DynamicResource Style_Button_Img}" Click="Btn_SendToImportImg_Click" Tag="Replace" Content="/Image/icon_change_image.png"
+                        MouseEnter="Open_Tootip" MouseLeave="Close_Tootip"/>
+                <Button x:Name="Btn_PSD" IsEnabled="False" Margin="25,0,0,0" Style="{DynamicResource Style_Button_Img}" Click="Btn_OutputPSD_Click" Tag="PSD" Content="/Image/icon_save_layers.png"
+                        MouseEnter="Open_Tootip" MouseLeave="Close_Tootip"/>
+            </StackPanel>
+            <!--#endregion-->
+
+            <!--#region Bar-->
+            <StackPanel Visibility="Collapsed" x:Name="Stackpanel_Progress" Orientation="Vertical" Margin="889,213,0,0" Opacity="0.8" Width="482" Height="482" Background="Black">
+                <TextBlock Name="Seconds_text" Text="0.0" TextAlignment="Center" Margin="0,165,0,0" Foreground="White" FontSize="48" FontWeight="Bold" Width="200" Height="Auto"/>
+                <ProgressBar Name="ProgressBar_State" Margin="0,10,0,0" Value="0" HorizontalAlignment="Center" Height="20"  Width="380"  Foreground="{DynamicResource Style_Gradual}"/>
+                <TextBlock Name="Count_Number" Margin="0,20,0,0" Text="1/1" HorizontalAlignment="Center" Foreground="Gray" FontSize="24" FontWeight="Bold"/>
+            </StackPanel>
+            <!--#endregion-->
+
+            <!--#region mini close-->
+            <Canvas Margin="1265,0">
+                <StackPanel Orientation="Horizontal">
+                    <Button Style="{DynamicResource Style_Button_mini}" Click="Button_mini_Click" />
+                    <Button Style="{DynamicResource Style_Button_close}" Click="Button_close_Click" />
+                </StackPanel>
+            </Canvas>
+            <!--#endregion-->
+
+            <!--#region POP-->
+            <Canvas Name="Canvas_Pop_LargeImg" Visibility="Collapsed">
+                <Canvas Margin="0,-2,0,0" Height="992" Width="1433" Background="Black" Opacity="0.8"/>
+                <Canvas Margin="0,100,0,0" Width="1433" Height="888" Background="Black" Opacity="0.7"/>
+                <Canvas Margin="0,100,0,0" Width="1433" Height="888">
+                    <Button Style="{DynamicResource Style_Button_close}" Click="Btn_pop_close_Click" Canvas.Right="0" Canvas.Top="0" />
+
+                    <Button x:Name="Btn_L" Style="{DynamicResource Style_Button_Left}" Canvas.Left="200" Canvas.Top="400" Click="Btn_L_Click"/>
+                    <Button x:Name="OutputImg_Large" Style="{DynamicResource Style_Button_In_Image}" 
+                            Height="600" Width="600" Canvas.Left="417" Canvas.Top="120" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Button x:Name="Btn_R" Style="{DynamicResource Style_Button_Right}" Canvas.Right="200" Canvas.Top="400" Click="Btn_R_Click"/>
+
+                    <StackPanel Orientation="Horizontal" Canvas.Left="442" Canvas.Top="790" RenderTransformOrigin="0.507,0.637" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <Button x:Name="Btn_Dir_In" Style="{DynamicResource Style_Button_Img}" Click="Btn_OpenOutputDir_Click" Tag="Dir_In" Content="/Image/icon_save.png"
+                        MouseEnter="Open_Tootip" MouseLeave="Close_Tootip"/>
+                        <Button x:Name="Btn_Replace_In" IsEnabled="False" Margin="50,0,0,0" Style="{DynamicResource Style_Button_Img}" Click="Btn_SendToImportImg_Click" Tag="Replace_In" Content="/Image/icon_change_image.png"
+                        MouseEnter="Open_Tootip" MouseLeave="Close_Tootip"/>
+                        <Button x:Name="Btn_PSD_In" IsEnabled="False" Margin="50,0,0,0" Style="{DynamicResource Style_Button_Img}" Click="Btn_OutputPSD_Click" Tag="PSD_In" Content="/Image/icon_save_layers.png"
+                        MouseEnter="Open_Tootip" MouseLeave="Close_Tootip"/>
+                    </StackPanel>
+                </Canvas>
+            </Canvas>
+            <!--#endregion-->
+
+            <!--#region Loading-->
+            <Canvas Margin="0,100,0,0" Name="Canvas_Loading" Visibility="Collapsed">
+                <Canvas Height="890" Width="1433" Background="Black" Opacity="0.8"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Image Name="Image_Loading" Width="300" Height="300" Margin="567,304" Source="pack://application:,,,/Image/img_scan.png" RenderTransformOrigin="0.5,0.5"/>
+                <Border HorizontalAlignment="Center" Margin="567,304" Width="300" Height="300">
+                    <TextBlock Name="Text_Load" Text="Loading..." Width="160" Foreground="White" FontSize="22" TextAlignment="Center" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                </Border>
+            </Canvas>
+            <!--#endregion-->
+
+            <!--#region pop Delete-->
+            <Canvas Margin="0,-2,0,0" Name="Canvas_Delete" Visibility="Collapsed">
+                <Canvas Height="992" Width="1433" Background="Black" Opacity="0.8"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                
+                <Border HorizontalAlignment="Center" Margin="417,354" Width="600" Height="310" Background="#656565" 
+                        BorderThickness="4" BorderBrush="#bc86ff" CornerRadius="12"></Border>
+                    <TextBlock Margin="449,449" Name="Text_Delete" Width="544" Height="Auto" Text="Are you sure to delete?" Foreground="White" FontSize="24" 
+                               TextAlignment="Center"/>
+                <Button x:Name="Btn_pop_yes" Margin="561,542" Content="Yes" Style="{DynamicResource Style_Button_pop}" Click="Btn_Pop_Yes_Click"/>
+                <Button x:Name="Btn_pop_no" Margin="734,542" Content="No" Style="{DynamicResource Style_Button_pop}" Click="Btn_Pop_No_Click"/>
+            </Canvas>
+            <!--#endregion-->
+
+            <!--#region Tooltip-->
+            <Canvas x:Name="Canvas_Tooltip" Margin="842,860,0,0" Visibility="Collapsed">
+                <Border Width="auto" Height="25" Background="#FFDFDFC4">
+                    <TextBlock x:Name="TextBlock_Tooltip" Margin="10,0" Text="Open saved folder" FontSize="16"/>
+                </Border>
+            </Canvas>
+            <!--#endregion-->
+        </Canvas>
+    </Viewbox>
+</Window>

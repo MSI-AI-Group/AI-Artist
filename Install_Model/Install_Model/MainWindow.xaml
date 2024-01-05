@@ -1,0 +1,72 @@
+﻿<Window x:Class="AI_Artist_V2.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:AI_Artist_V2"
+		mc:Ignorable="d"
+		Height="888" Width="1283"
+		WindowStyle="None" MouseLeftButtonDown="Grid_MouseLeftButtonDown" 
+		MouseMove="Grid_MouseMove" MouseLeftButtonUp="Grid_MouseLeftButtonUp"
+		ResizeMode="NoResize"
+		Unloaded="Windows_Unload" Visibility="Hidden">
+
+	<Window.Background>
+		<ImageBrush ImageSource="/Image/bg1.png"/>
+	</Window.Background>
+
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="pack://application:,,,/Resources/Resource_Window_Main.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+
+	<WindowChrome.WindowChrome>
+		<WindowChrome            
+		CaptionHeight="0"
+		CornerRadius="16"
+		GlassFrameThickness="0"
+		UseAeroCaptionButtons="False"
+		ResizeBorderThickness="0,0,4,15"
+		NonClientFrameEdges="None"/>
+	</WindowChrome.WindowChrome>
+
+	<Viewbox>
+		<!--<Canvas Height="908" Width="1383">-->
+		<Canvas Height="988" Width="1433">
+
+
+			<!-- Region Setting-->
+			<StackPanel Orientation="Vertical" Margin="50,120,0,0">
+				<StackPanel Orientation="Horizontal" Height="40" >
+					<Label Content="Optimizer:" Foreground="White" FontSize="18" Width="100"/>
+					<RadioButton Name="Opt_Pytorch" Content="Pytorch" Style="{DynamicResource Style_RadioButton_Text_Style}" Checked="SwitchOpt_Checked"/>
+					<RadioButton Margin="10,0,0,0" Name="Opt_xformers" Content="xformers" Style="{DynamicResource Style_RadioButton_Text_Style}" Checked="SwitchOpt_Checked"/>
+					<RadioButton Margin="10,0,0,0" Name="Opt_TensorRT" Content="TensorRT" Style="{DynamicResource Style_RadioButton_Text_Style}" Checked="SwitchOpt_Checked"/>
+				</StackPanel>
+			</StackPanel>
+			<!--#endregion-->
+
+			<!--#region mini close-->
+			<Canvas Margin="1265,0">
+				<StackPanel Orientation="Horizontal">
+					<Button Style="{DynamicResource Style_Button_mini}" Click="Button_mini_Click" />
+					<Button Style="{DynamicResource Style_Button_close}" Click="Button_close_Click" />
+				</StackPanel>
+			</Canvas>
+			<!--#endregion-->
+
+			<!--#region Loading-->
+			<Canvas Margin="0,100,0,0" Name="Canvas_Loading" Visibility="Collapsed">
+				<Canvas Height="890" Width="1433" Background="Black" Opacity="0.8"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+				<Image Name="Image_Loading" Width="300" Height="300" Margin="567,304" Source="pack://application:,,,/Image/img_scan.png" RenderTransformOrigin="0.5,0.5"/>
+				<Border HorizontalAlignment="Center" Margin="567,304" Width="300" Height="300">
+					<TextBlock Name="Text_Load" Text="Loading..." Width="160" Foreground="White" FontSize="22" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+				</Border>
+			</Canvas>
+			<!--#endregion-->
+		</Canvas>
+	</Viewbox>
+</Window>
