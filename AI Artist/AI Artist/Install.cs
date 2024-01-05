@@ -201,7 +201,7 @@ namespace AI_Artist_V2
 				$"pip install torchvision==0.14.1",  //for cpu
 				$"pip install opencv-python",
 				$"pip install pycocotools",
-				$"pip install pytoshop==1.1.0 -I --no-cache-dir",
+				$"pip install https://download.lfd.uci.edu/pythonlibs/archived/pytoshop-1.2.1-cp310-cp310-win_amd64.whl",
 				$"pip install segment_anything",
 				"exit"
 			};
