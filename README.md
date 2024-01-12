@@ -5,7 +5,7 @@ Feature include:
 2. Image to Image
 3. Image to Text
 4. Image Segment
-5. Input customize SD model or LoRA
+5. Import customized Checkpoint and LoRA model types of SD1.5 based
 
 # Requirements
 - OS: Windows 11  
