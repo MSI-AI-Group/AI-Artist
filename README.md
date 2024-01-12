@@ -10,10 +10,10 @@ Feature include:
 # Requirements
 - OS: Windows 11  
 * Hardware:
-1. CPU: Intel 13th up  
-2. GPU: NVIDIA 4050 up  
-3. GPU Driver: 528.xx up
-4. RAM: 
+  1. CPU: Intel 13th up  
+  2. GPU: NVIDIA 4050 up  
+  3. GPU Driver: 528.xx up
+  4. RAM: 
 - Python: 3.10.6  
 https://www.python.org/ftp/python/3.10.6/python-3.10.6-amd64.exe  
 * Git: 2.41.0.2  
