@@ -1,11 +1,11 @@
 # AI-Artist
-For user easy generate by local device.  
+For users to generate AIGC easily by the local device.  
 Feature include:
 1. Text to Image
 2. Image to Image
 3. Image to Text
-4. Image Segment
-5. Import customized Checkpoint and LoRA model types of SD1.5 based
+4. Image Auto-Segment and transfer to Photoshop-supported image format
+5. Import customized Checkpoint and LoRA model types of SD1.5-base
 
 # Requirements
 - OS: Windows 11  
