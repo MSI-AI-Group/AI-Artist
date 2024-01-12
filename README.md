@@ -10,15 +10,15 @@ Feature include:
 # Requirements
 - OS: Windows 11  
 * Hardware:
-- CPU: Intel 13th up  
-- GPU: NVIDIA 4050 up  
-- GPU Driver: 528.xx up
--- RAM: 
-* Python: 3.10.6  
+1. CPU: Intel 13th up  
+2. GPU: NVIDIA 4050 up  
+3. GPU Driver: 528.xx up
+4. RAM: 
+- Python: 3.10.6  
 https://www.python.org/ftp/python/3.10.6/python-3.10.6-amd64.exe  
-- Git: 2.41.0.2  
+* Git: 2.41.0.2  
 https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.2/Git-2.41.0.2-64-bit.exe  
-* Cuda: 11.8  
+- Cuda: 11.8  
 https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_522.06_windows.exe
 
 # Installation
