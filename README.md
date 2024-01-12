@@ -12,8 +12,8 @@ Feature include:
 * Hardware:
   - CPU: Intel 13th up  
   - GPU: NVIDIA 4050 up  
-  - GPU Driver: 528.xx up
-  - RAM: 
+  - GPU Driver: 528.xx or later
+  - RAM: 16GB up
 - Python: 3.10.6  
 https://www.python.org/ftp/python/3.10.6/python-3.10.6-amd64.exe  
 * Git: 2.41.0.2  
