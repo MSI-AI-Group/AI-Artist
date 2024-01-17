@@ -1616,7 +1616,7 @@ namespace AI_Artist_V2
 
 			foreach (var lora in Lora_list)
 			{
-				string selectedItem = ((ComboBoxItem)CB_Style.SelectedItem).Content.ToString();
+				string selectedItem = ((ComboBoxItem)CB_LoRA.SelectedItem).Content.ToString();
 
 				if (selectedItem == lora.displayName)
 				{
