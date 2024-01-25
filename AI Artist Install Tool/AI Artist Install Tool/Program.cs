@@ -118,6 +118,27 @@ namespace AI_Artist_Install_Tool
 				Thread.Sleep(1000);
 				process_check = Process.GetProcessesByName("AI_Install_Model");
 			}
+
+			try
+			{
+				Log("Close python...");
+				Process[] process = Process.GetProcessesByName("python");
+				foreach (var item in process)
+				{
+					try
+					{
+						item.Kill();
+					}
+					catch (Exception ex)
+					{
+						Log("Close python item " + ex.ToString());
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Log("Close python " + ex.ToString());
+			}
 		}
 
 		#region run install model
