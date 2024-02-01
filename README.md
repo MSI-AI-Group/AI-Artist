@@ -11,7 +11,7 @@ Feature include:
 - OS: Windows 11  
 * Hardware:
   - CPU: Intel 13th up  
-  - GPU: NVIDIA 4050 up  
+  - GPU: NVIDIA RTX 4050 up  
   - GPU Driver: 528.xx or later
   - RAM: 16GB up
 - Python: 3.10.6 (Please set Python to environment variables)  
