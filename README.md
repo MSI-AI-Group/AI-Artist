@@ -1,5 +1,5 @@
 # AI-Artist
-For users to generate AIGC easily by the local device.  
+
 Feature include:
 1. Text to Image
 2. Image to Image
