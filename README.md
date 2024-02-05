@@ -9,17 +9,17 @@ Feature include :
 
 # Requirements
 - OS: Windows 11
-* Hardware :
+- Hardware :
   - CPU : Intel 13th up
   - GPU : NVIDIA RTX 4050 up
   - GPU Driver : 528.xx or later
   - RAM : 16GB up
-- Python: 3.10.6 (Please set Python to environment variables)
-https://www.python.org/ftp/python/3.10.6/python-3.10.6-amd64.exe
-* Git: 2.41.0.2
-https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.2/Git-2.41.0.2-64-bit.exe
-- Cuda: 11.8
-https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_522.06_windows.exe
+- Python: 3.10.6 (Please set Python to environment variables)  
+  https://www.python.org/ftp/python/3.10.6/python-3.10.6-amd64.exe
+- Git: 2.41.0.2  
+  https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.2/Git-2.41.0.2-64-bit.exe
+- Cuda: 11.8  
+  https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_522.06_windows.exe
 
 # Installation
 1. Make sure your system is suitable for the requirements, and open CMD window to run the command :
