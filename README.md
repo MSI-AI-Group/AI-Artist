@@ -26,8 +26,8 @@ Feature include :
   ```
   git clone https://github.com/MSI-AI-Group/AI-Artist.git
   ```
-2. Run `Package\AI Artist Install Tool.exe`, please wait until the console window is closed. (The installation may take up to several hours)
-3. Run `Package\AI Artist.exe`, and then the installation process finish.
+2. Open `Package` folder then execute `AI Artist Install Tool.exe`, please wait until the console window is closed. (The installation may take up to several hours)
+3. Open `Package` folder then execute `AI Artist.exe`, and then the installation process finish.
 
 # How to use
 1. Choose Optimizer, Style, Plugin.
